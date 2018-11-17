@@ -7,11 +7,14 @@ namespace TicketsApp
 {
     public partial class App : Application
     {
+        public static string Cliente { get; set; }
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            //MainPage = new NavigationPage(new Paginas.PaginaLogin());
+            MainPage = new NavigationPage(new Paginas.PaginaLogin());
         }
 
         protected override void OnStart()

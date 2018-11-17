@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TicketsApp.Paginas.PaginaTicket"
+             Title="Ticket">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="White">
+                <Label Text="Comentarios" TextColor="Orange" FontSize="Large" Margin="10,5"/>
+                <Entry Placeholder="Comentarios" x:Name="txtComentarios" Text="{Binding Comentarios}"
+                       WidthRequest="300" FontSize="Medium" HorizontalOptions="Start" 
+                       TextColor="Black" BackgroundColor="LightGreen" Margin="10,5"/>
+
+                <Label Text="Status" TextColor="Orange" FontSize="Large" Margin="10,5"/>
+                <Label Text="{Binding Status}" TextColor="Black" FontSize="Medium" Margin="10,5"/>
+
+                <Label Text="Comprobante" TextColor="Orange" FontSize="Large" Margin="15"/>
+                <Image x:Name="imagenComprobante" WidthRequest="300" HeightRequest="300" HorizontalOptions="Center" Margin="15" />
+
+                <Label Text="Ticket" TextColor="Orange" FontSize="Large" Margin="15"/>
+                <Image x:Name="imagenTicket" WidthRequest="300" HeightRequest="300" HorizontalOptions="Center" Margin="15" />
+
+                <ActivityIndicator x:Name="indicator" Color="Green" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="btnSubirComprobante" Text="Subir Comprobante" Order="Primary" Priority="0" Clicked="btnSubirComprobante_Clicked"/>
+        <ToolbarItem x:Name="btnVerComprobante" Text="| Ver Comprobante" Order="Primary" Priority="0" Clicked="btnVerComprobante_Clicked"/>
+        <ToolbarItem x:Name="btnVerTicket" Text="| Ver Ticket" Order="Primary" Priority="0" Clicked="btnVerTicket_Clicked"/>
+        <ToolbarItem x:Name="btnBorrarComprobante" Text="| Eliminar" Order="Primary" Priority="0" Clicked="btnBorrarComprobante_Clicked"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

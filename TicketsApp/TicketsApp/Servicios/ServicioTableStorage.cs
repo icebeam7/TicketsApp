@@ -16,8 +16,22 @@ namespace TicketsApp.Servicios
         readonly static CloudTableClient tableClient = cloudStorageAccount.CreateCloudTableClient();
         readonly static CloudTable ticketsTable = tableClient.GetTableReference(Constantes.Table_Tickets);
 
+        public static async Task<bool> GuardarTicket(Ticket ticket)
+        {
+            await ticketsTable.CreateIfNotExistsAsync();
+
+            var operacion = TableOperation.InsertOrMerge(ticket);
+            var upsert = await ticketsTable.ExecuteAsync(operacion);
+            var code = upsert.HttpStatusCode;
+
+            return (code == 204);
+            //return (code >= 200 && code < 300);
+        }
+
         public static async Task<List<Ticket>> ObtenerTickets(string partitionKey)
         {
+            await ticketsTable.CreateIfNotExistsAsync();
+
             TableQuery<Ticket> query = new TableQuery<Ticket>().Where(
                 TableQuery.GenerateFilterCondition("PartitionKey", 
                 QueryComparisons.Equal, partitionKey));
@@ -46,19 +60,11 @@ namespace TicketsApp.Servicios
 
         public static async Task<Ticket> ObtenerTicket(string partitionKey, string rowKey)
         {
+            await ticketsTable.CreateIfNotExistsAsync();
+
             var operacion = TableOperation.Retrieve<Ticket>(partitionKey, rowKey);
             var query = await ticketsTable.ExecuteAsync(operacion);
             return query.Result as Ticket;
-        }
-
-        public static async Task<bool> GuardarTicket(Ticket ticket)
-        {
-            var operacion = TableOperation.InsertOrMerge(ticket);
-            var upsert = await ticketsTable.ExecuteAsync(operacion);
-            var code = upsert.HttpStatusCode;
-
-            return (code == 204);
-            //return (code >= 200 && code < 300);
         }
 
         public static async Task<bool> BorrarTicket(Ticket ticket)

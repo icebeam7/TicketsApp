@@ -12,7 +12,8 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <Label Text="Cliente: " Grid.Row="0" Grid.Column="0" 
@@ -21,13 +22,15 @@
                 
                 <Entry Placeholder="Cliente" x:Name="txtCliente"
                        Grid.Row="0" Grid.Column="1" WidthRequest="300"
-                       HorizontalOptions="Start" TextColor="Black"
+                       HorizontalOptions="Center" TextColor="Black"
+                       VerticalOptions="Center"
                        BackgroundColor="LightGreen"/>
 
                 <Button x:Name="btnIniciarSesion" Text="Iniciar sesión"
-                        Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                        Grid.Row="0" Grid.Column="2" 
                         BackgroundColor="LightBlue" TextColor="Black" 
-                        HorizontalOptions="Center" WidthRequest="300"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
                         Clicked="btnIniciarSesion_Clicked"/>
             </Grid>
         </StackLayout>

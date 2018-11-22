@@ -13,7 +13,6 @@ namespace TicketsApp
         {
             InitializeComponent();
 
-            //MainPage = new NavigationPage(new Paginas.PaginaLogin());
             MainPage = new NavigationPage(new Paginas.PaginaLogin());
         }
 

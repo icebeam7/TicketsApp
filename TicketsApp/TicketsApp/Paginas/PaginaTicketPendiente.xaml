@@ -3,10 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TicketsApp.Paginas.PaginaTicketPendiente">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout BackgroundColor="White">
+                <Label Text="Comentarios" TextColor="Orange" FontSize="Large" Margin="10,5"/>
+                <Label Text="{Binding Comentarios}" TextColor="Black" FontSize="Medium" Margin="10,5"/>
+
+                <Label Text="Status" TextColor="Orange" FontSize="Large" Margin="10,5"/>
+                <Entry Placeholder="Status" x:Name="txtStatus" Text="{Binding Status}"
+                       WidthRequest="300" FontSize="Medium" HorizontalOptions="Start" 
+                       TextColor="Black" BackgroundColor="LightGreen" Margin="10,5"/>
+
+                <Label Text="Comprobante" TextColor="Orange" FontSize="Large" Margin="15"/>
+                <Image Source="{Binding ComprobanteURL}" x:Name="imagenComprobante" WidthRequest="300" HeightRequest="300" HorizontalOptions="Center" Margin="15" />
+
+                <Label Text="Ticket" TextColor="Orange" FontSize="Large" Margin="15"/>
+                <Image Source="{Binding TicketURL}" x:Name="imagenTicket" WidthRequest="300" HeightRequest="300" HorizontalOptions="Center" Margin="15" />
+
+                <ActivityIndicator x:Name="indicator" Color="Green" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="btnGenerarTicket" Text="Generar Ticket" 
+                     Order="Primary" Priority="0" Clicked="btnGenerarTicket_Clicked"/>
+        <ToolbarItem x:Name="btnGuardarObservaciones" Text="| Guardar con Observaciones" 
+                     Order="Primary" Priority="0" Clicked="btnGuardarObservaciones_Clicked"/>
+    </ContentPage.ToolbarItems>
 </ContentPage>

@@ -76,6 +76,8 @@ namespace TicketsApp.Paginas
 
                         if (registro)
                         {
+                            await ServicioQueueStorage.ColocarTicket(ticket);
+
                             await DisplayAlert("¡Muy bien!", "Comprobante almacenado exitosamente", "OK");
                             await Navigation.PopAsync();
                         }

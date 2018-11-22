@@ -22,6 +22,8 @@ namespace TicketsApp.Servicios
                 (tipo == Constantes.Container_Comprobantes) ? comprobantesContainer :
                 (tipo == Constantes.Container_Tickets) ? ticketsContainer : null;
 
+            await contenedor.CreateIfNotExistsAsync(BlobContainerPublicAccessType.Container, null, null);
+
             if (contenedor != null)
             {
                 if (string.IsNullOrWhiteSpace(nombre))
@@ -41,6 +43,8 @@ namespace TicketsApp.Servicios
             var contenedor =
                 (tipo == Constantes.Container_Comprobantes) ? comprobantesContainer :
                 (tipo == Constantes.Container_Tickets) ? ticketsContainer : null;
+
+            await contenedor.CreateIfNotExistsAsync(BlobContainerPublicAccessType.Container, null, null);
 
             if (contenedor != null)
             {
